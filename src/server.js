@@ -9,9 +9,9 @@ app.use(express.json());
 
 app.use(routes);
 
-app.listen(3002);
+app.listen(3001);
 
-const sqlite3 = require('sqlite3').verbose();
+/*const sqlite3 = require('sqlite3').verbose();
 
 let db = new sqlite3.Database('db.sqlite', (err)=>{
     if(err){
