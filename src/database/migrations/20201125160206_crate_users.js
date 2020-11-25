@@ -4,9 +4,14 @@ exports.up = function(knex) {
         /*table.increments();*/
         table.string('id').primary();
         table.string('name').notNullable();
+        table.string('rua');
+        table.string('bairro');
+        table.string('numero');
+        table.string('complemento');
+        table.string('telefone');
         table.string('email').notNullable();
-        table.integer('idade');
-        table.string('empresa');
+        table.password('senha');
+
         /*table.timestamps();*/
     })
 };

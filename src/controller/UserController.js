@@ -3,26 +3,19 @@ const connection = require('../database/connection');
 const routes = require('../routes');
 
 module.exports = {
-    async list(req, res){
-        const users = await connection('users').select('*');
-        return res.json(users);
-    },
-    async show(req, res){
-        const {id} = req.params;
-        const user = await connection('users')
-                    .where('id', id)
-                    .select('*');
-        return res.json(user);
-    },
     async create(req, res){
         const {name, email, idade, empresa} = req.body;
         const id = crypto.randomBytes(4).toString('HEX');
         await connection('users').insert({
             id,
             name,
+            rua,
+            bairro,
+            numero,
+            complemento,
+            telefone,
             email,
-            idade,
-            empresa
+            senha
         })
         /*console.log(params);*/
         return res.json({id})
@@ -33,12 +26,27 @@ module.exports = {
         await connection('users').where('id', id).update({
             id,
             name,
+            rua,
+            bairro,
+            numero,
+            complemento,
+            telefone,
             email,
-            idade,
-            empresa
+            senha
         })
         /*return res.json({id})*/
         return res.status(204).send();
+    },
+    async list(req, res){
+        const users = await connection('users').select('*');
+        return res.json(users);
+    },
+    async show(req, res){
+        const {id} = req.params;
+        const user = await connection('users')
+                    .where('id', id)
+                    .select('*');
+        return res.json(user);
     },
     async delete(req, res){
         const {id} = req.params;
