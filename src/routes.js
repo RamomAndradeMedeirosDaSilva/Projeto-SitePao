@@ -2,6 +2,7 @@ const express = require('express');
 const routes = express.Router();
 const UserController = require('./controller/UserController');
 const ProductController = require('./controller/ProductController');
+const BagController = require('./controller/BagController');
 
 //Rotas de usuário
 routes.post('/users',UserController.create)
@@ -20,5 +21,12 @@ routes.post('/products', ProductController.create)
 routes.get('/products/:id', ProductController.show)
 
 routes.get('/products', ProductController.list)
+
+//Rotas de sacola
+routes.post('/bag', BagController.create)
+
+routes.get('/bag/:id', BagController.show)
+
+routes.get('/bags', BagController.list)
 
 module.exports = routes;
