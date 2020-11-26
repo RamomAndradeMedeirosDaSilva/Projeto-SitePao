@@ -22,11 +22,17 @@ routes.get('/products/:id', ProductController.show)
 
 routes.get('/products', ProductController.list)
 
+routes.put('/products/:id', ProductController.update)
+
 //Rotas de sacola
 routes.post('/bag', BagController.create)
 
 routes.get('/bag/:id', BagController.show)
 
 routes.get('/bags', BagController.list)
+
+routes.put('/bag/:id', BagController.update)
+
+routes.delete('/bag/:id', BagController.delete)
 
 module.exports = routes;

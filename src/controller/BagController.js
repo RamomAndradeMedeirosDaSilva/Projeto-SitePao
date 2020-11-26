@@ -15,6 +15,18 @@ module.exports = {
         })
         return res.json({id})
     },
+    async update(req, res){
+        const {id} = req.params;
+        const {descricao, usuarioid, produtosid, totalcompra} = req.body;
+        await connection('bag').where('id', id).update({
+            id,
+            descricao,
+            usuarioid,
+            produtosid,
+            totalcompra
+        })
+        return res.status(204).send();
+    },
     async show(req, res){
         const {id} = req.params;
         const bag = await connection('bag')
@@ -25,5 +37,11 @@ module.exports = {
     async list(req, res){
         const bags = await connection('bag').select('*');
         return res.json(bags);
+    },
+    async delete(req, res){
+        const {id} = req.params;
+        await connection('bag').where('id', id).delete();
+        
+        return res.status(204).send();
     }
 }

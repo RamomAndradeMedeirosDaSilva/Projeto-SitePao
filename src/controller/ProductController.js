@@ -15,6 +15,18 @@ module.exports = {
         })
         return res.json({id})
     },
+    async update(req, res){
+        const {id} = req.params;
+        const {name, descricao, quantidade, preco} = req.body;
+        await connection('products').where('id', id).update({
+            id,
+            name,
+            descricao,
+            quantidade,
+            preco
+        })
+        return res.status(204).send();
+    },
     async show(req, res){
         const {id} = req.params;
         const product = await connection('products')
