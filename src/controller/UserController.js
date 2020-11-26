@@ -4,7 +4,7 @@ const routes = require('../routes');
 
 module.exports = {
     async create(req, res){
-        const {name, email, idade, empresa} = req.body;
+        const {name, rua, bairro, numero, complemento, telefone, email, senha} = req.body;
         const id = crypto.randomBytes(4).toString('HEX');
         await connection('users').insert({
             id,
@@ -22,7 +22,7 @@ module.exports = {
     },
     async update(req, res){
         const {id} = req.params;
-        const {name, email, idade, empresa} = req.body;
+        const {name, rua, bairro, numero, complemento, telefone, email, senha} = req.body;
         await connection('users').where('id', id).update({
             id,
             name,

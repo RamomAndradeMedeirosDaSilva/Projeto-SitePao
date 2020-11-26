@@ -10,7 +10,7 @@ exports.up = function(knex) {
         table.string('complemento');
         table.string('telefone');
         table.string('email').notNullable();
-        table.password('senha');
+        table.string('senha');
 
         /*table.timestamps();*/
     })
