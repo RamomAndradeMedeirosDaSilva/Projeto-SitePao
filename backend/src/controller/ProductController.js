@@ -4,26 +4,28 @@ const routes = require('../routes');
 
 module.exports = {
     async create(req, res){
-        const {name, descricao, quantidade, preco} = req.body;
+        const {name, descricao, quantidade, preco, linkImg} = req.body;
         const id = crypto.randomBytes(4).toString('HEX');
         await connection('products').insert({
             id,
             name,
             descricao,
             quantidade,
-            preco
+            preco,
+            linkImg
         })
         return res.json({id})
     },
     async update(req, res){
         const {id} = req.params;
-        const {name, descricao, quantidade, preco} = req.body;
+        const {name, descricao, quantidade, preco, linkImg} = req.body;
         await connection('products').where('id', id).update({
             id,
             name,
             descricao,
             quantidade,
-            preco
+            preco,
+            linkImg
         })
         return res.status(204).send();
     },

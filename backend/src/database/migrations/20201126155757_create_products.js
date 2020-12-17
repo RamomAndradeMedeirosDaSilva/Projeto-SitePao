@@ -6,6 +6,7 @@ exports.up = function(knex) {
         table.string('descricao');
         table.integer('quantidade').notNullable();
         table.decimal('preco');
+        table.string('linkImg');
     })
 };
 
